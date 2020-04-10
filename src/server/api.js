@@ -3,6 +3,8 @@ const compression = require('compression');
 const helmet = require('helmet');
 const express = require('express');
 
+const { listOrgs } = require('./routes/orgs');
+
 const app = express();
 app.use(helmet());
 app.use(compression());
@@ -10,12 +12,12 @@ app.use(compression());
 const HOST = process.env.API_HOST || 'localhost';
 const PORT = process.env.API_PORT || 3002;
 
-app.get('/api/v1/endpoint', (req, res) => {
-    res.json({ success: true });
+app.get('/api/v1/orgs', (req, res) => {
+    listOrgs()
+        .then((result) => res.json(result))
+        .catch((error) => res.json({ error }));
 });
 
 app.listen(PORT, () =>
-    console.log(
-        `✅  API Server started: http://${HOST}:${PORT}/api/v1/endpoint`
-    )
+    console.log(`✅  API Server started: http://${HOST}:${PORT}/api/v1/`)
 );
