@@ -15,4 +15,5 @@ const listOrgs = () => {
 
 module.exports = {
     listOrgs
+    // Export your new function here for the user display
 };

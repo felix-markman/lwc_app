@@ -3,7 +3,10 @@ const compression = require('compression');
 const helmet = require('helmet');
 const express = require('express');
 
-const { listOrgs } = require('./routes/orgs');
+const {
+    listOrgs
+    // Import your new function for user display here
+} = require('./routes/orgs');
 
 const app = express();
 app.use(helmet());
@@ -17,6 +20,8 @@ app.get('/api/v1/orgs', (req, res) => {
         .then((result) => res.json(result))
         .catch((error) => res.json({ error }));
 });
+
+// Add another get here that will invoke the function for user display
 
 app.listen(PORT, () =>
     console.log(`✅  API Server started: http://${HOST}:${PORT}/api/v1/`)
