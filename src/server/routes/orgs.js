@@ -11,7 +11,17 @@ const listOrgs = () => {
     });
 };
 
-// TODO: Write another api function to run force:user:display that has one argument: the username
+// // TODO: Write another api function to run force:user:display that has one argument: the username
+// const showUser = () => {
+//     return new Promise((resolve, reject) => {
+//         childProcess.exec('force:user:display', (err, stdout, stderr) => {
+//             if (err) {
+//                 reject(stderr);
+//             }
+//             resolve(stdout);
+//         });
+//     });
+// };
 
 module.exports = {
     listOrgs
