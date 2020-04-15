@@ -25,9 +25,9 @@ app.get('/api/v1/orgs', (req, res) => {
 });
 
 app.get('/api/v1/user', (req, res) => {
-    authenticate('cyborg')
-        .then((result) => res.json(result))
-        .catch((error) => res.json({ error }));
+    // authenticate('cyborg')
+    //     .then((result) => res.json(result))
+    //     .catch((error) => res.json({ error }));
     showUser('cyborg')
         .then((result) => res.json(result))
         .catch((error) => res.json({ error }));
