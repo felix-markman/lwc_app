@@ -3,10 +3,13 @@ const compression = require('compression');
 const helmet = require('helmet');
 const express = require('express');
 
-const {
-    listOrgs
-    // Import your new function for user display here
-} = require('./routes/orgs');
+const { listOrgs } = require('./routes/orgs');
+
+// const {
+//     showUser
+// } = require('./routes/user');
+
+const { authenticate, showUser } = require('./routes/user');
 
 const app = express();
 app.use(helmet());
@@ -17,6 +20,15 @@ const PORT = process.env.API_PORT || 3002;
 
 app.get('/api/v1/orgs', (req, res) => {
     listOrgs()
+        .then((result) => res.json(result))
+        .catch((error) => res.json({ error }));
+});
+
+app.get('/api/v1/user', (req, res) => {
+    // authenticate('cyborg')
+    //     .then((result) => res.json(result))
+    //     .catch((error) => res.json({ error }));
+    showUser('cyborg')
         .then((result) => res.json(result))
         .catch((error) => res.json({ error }));
 });
